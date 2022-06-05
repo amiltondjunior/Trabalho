@@ -1,0 +1,35 @@
+ Public Sub Main(ByVal args As String())
+        executaSequencial(10)
+        executaParalelo(10)
+
+        Console.ReadKey()
+    End Sub
+
+    Private Sub escreverNumero(ByVal numero As Integer)
+        Console.WriteLine(numero)
+        Thread.Sleep(500)
+    End Sub
+
+    Private Sub executaSequencial(ByVal qtde As Integer)
+        Dim sw As New Stopwatch()
+        sw.Start()
+
+        For i As Integer = 1 To qtde
+            escreverNumero(i)
+        Next
+
+        sw.Stop()
+        Console.WriteLine("Tempo execucao com for normal: " &amp; sw.Elapsed.ToString)
+    End Sub
+
+    Private Sub executaParalelo(ByVal qtde As Integer)
+        Dim sw As New Stopwatch()
+        sw.Start()
+
+        Parallel.For(1, qtde + 1, Sub(i As Integer) escreverNumero(i))
+
+        sw.Stop()
+        Console.WriteLine("Tempo execucao com for paralelo: " &amp; sw.Elapsed.ToString)
+    End Sub
+
+    
