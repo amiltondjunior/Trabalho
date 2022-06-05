@@ -1,3 +1,5 @@
+ 
+ //Código Loop Numeros
  Public Sub Main(ByVal args As String())
         executaSequencial(10)
         executaParalelo(10)
